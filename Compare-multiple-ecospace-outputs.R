@@ -26,8 +26,8 @@ experiment_choice <- 1  # Set to 1 for Experiment 1, or 2 for Experiment 2
 if (experiment_choice == 1) {
   ## Experiment 1 --------------------------------------------------------------
   ## Compares scenarios with piece-wise environmental drivers
-  spa_scenarios  = c("spa_ST00_base-no-drivers", "spa_ST01a_surf-sal", 
-                     "spa_ST01b_temp", "spa_ST01c_PP-MODIS")
+  spa_scenarios  = c("exp1_01_base-no-drivers", "exp1_02_sal", 
+                     "exp1_03_temp", "exp1_04_PP-MODIS")
   spa_scen_names = c("01 No drivers",  "02 Salinity",   
                      "03 Temperature", "04 PP (MODIS)")
   out_file_notes = "test-STEdrivers"  ## label outputs
@@ -44,6 +44,13 @@ if (experiment_choice == 1) {
   out_file_notes = "comp-PPdrivers"
   dir_out <- "./Scenario_comps/Compare_ppDrivers/"  ## Folder where outputs will be stored
   col_spa <- c("goldenrod", "darkorchid3", "deeppink", "blue")
+}
+
+## Check if the files for the scenarios exist
+for (i in 1:length(spa_scenarios)) {
+  dir_spa <- paste0("./", ewe_name, "/", spa_scenarios[i], "/")
+  if (dir.exists(dir_spa)) print(paste0("Directory exists: ", dir_spa))
+  else message("Directory does NOT exist: ", dir_spa)
 }
 
 ## Create the output folder if it doesn't exist
@@ -485,7 +492,6 @@ sub_file_name_xM = paste0(dir_pdf_out, sub_plot_name_xM)
     }
   }
   dev.off()    
-  
   
   ## -----------------------------------------------------------------------------
   ##
