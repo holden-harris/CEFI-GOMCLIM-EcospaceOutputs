@@ -5,6 +5,8 @@
 ## 'B'   --> Denotes biomass
 ## 'C'   --> Denotes catch
 
+## Test push/pull from new computer
+
 ## Setup -----------------------------------------------------------------------
 rm(list=ls())
 source("./functions.R") ## Pull in functions
